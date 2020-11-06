@@ -23,16 +23,16 @@ public class SondageOption {
     }
 
     // Effacer un sondage
-    public void remove(final Sondage name) {
-        sondages.remove(name);
+    public void remove(final Sondage sondage) {
+        sondages.remove(sondage);
     }
 
     // Ajouter un sondage
     public Sondage add(final Sondage sondage) {
-        final Sondage newSondage = new Sondage(sondage.name,
-                sondage.description,
-                sondage.place,
-                sondage.date);
+        final Sondage newSondage = new Sondage(sondage.getName(),
+                sondage.getDescription(),
+                sondage.getPlace(),
+                sondage.getDate());
         return newSondage;
 
     }
