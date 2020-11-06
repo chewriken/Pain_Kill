@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>accessing-data-jpa</artifactId>
+    <artifactId>Pain_Kill</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>accessing-data-jpa</name>
+    <name>Pain_Kill</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -39,6 +39,11 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.2.8.RELEASE</version>
         </dependency>
     </dependencies>
 
