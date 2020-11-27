@@ -18,8 +18,13 @@ public class SondageOption {
 
     //Mettre à jour un sondage
     public Sondage update(final Sondage sondage) {
-        // TO DO
+        sondages.put(sondage.getId(), sondage);
         return sondage;
+    }
+
+    //Trouver un sondage avec l'id
+    public Sondage findById(final String id) {
+        return sondages.get(id);
     }
 
     // Effacer un sondage
@@ -29,10 +34,13 @@ public class SondageOption {
 
     // Ajouter un sondage
     public Sondage add(final Sondage sondage) {
-        final Sondage newSondage = new Sondage(sondage.getName(),
+        final String id = "fr" + System.currentTimeMillis() + "d";
+        final Sondage newSondage = new Sondage(id,
+                sondage.getName(),
                 sondage.getDescription(),
                 sondage.getPlace(),
                 sondage.getDate());
+        sondages.put(id, newSondage);
         return newSondage;
 
     }
