@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/accessing-data-jpa.iml" filepath="$PROJECT_DIR$/accessing-data-jpa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Pain_Kill.iml" filepath="$PROJECT_DIR$/.idea/Pain_Kill.iml" />
     </modules>
   </component>
 </project>
