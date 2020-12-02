@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="../static/css/Style.css" th:href="@{/css/Style.css}">
+</head>
+<body>
+    <h1>Inscription</h1>
+
+    <form action="#" th:action="@{/inscription}" th:object="${newClient}" method="POST">
+        <p> Prenom</p>
+        <input type="text" th:field="*{prenom}">
+        <p> Nom</p>
+        <input type="text" th:field="*{nom}">
+        <p> login</p>
+        <input type="text" th:field="*{login}">
+        <p> Password</p>
+        <input type="password" th:field="*{mdp}">
+        <input type="submit" value="save">
+    </form>
+
+    <div th:each="clt:${cltList}">
+        <p th:text="${clt.id}"></p>
+        <p th:text="${clt.prenom}"></p>
+        <p th:text="${clt.nom}"></p>
+        </br>
+    </div>
+</body>
+</html>
