@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ClientController {
 
-    @GetMapping
+    @GetMapping("/ClientPage")
     public String showClient(Model model){
         return "ClientPage";
     }

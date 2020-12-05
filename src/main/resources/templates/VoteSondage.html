@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vote</title>
+</head>
+<body>
+<h1>Vote</h1>
+<div th:each="vote:${voteSondageList}">
+        <p th:text="${vote.id}"></p>
+        <p th:text="${vote.session}"></p>
+    </div>
+</body>
+</html>
