@@ -6,9 +6,21 @@
 </head>
 <body>
 <h1>Vote</h1>
-<div th:each="vote:${voteSondageList}">
-        <p th:text="${vote.id}"></p>
-        <p th:text="${vote.session}"></p>
+    <h2>Liste de votes </h2>
+
+<form action="#" th:action="@{/VoteSondage}" th:object="${newVote}" method="post">
+    <p>Session :</p>
+    <input type="text" th:field="*{session}">
+    <p>Description :</p>
+    <input type="text" th:field="*{description}">
+    <input type="submit" value="Save">
+
+</form>
+        <div th:each="vote:${Vote}">
+            <p th:text="${vote.id}"></p>
+            <p th:text="${vote.session}"></p>
+            <p th:text="${vote.date}"></p>
+            <p th:text="${vote.description}"></p>
     </div>
 </body>
 </html>

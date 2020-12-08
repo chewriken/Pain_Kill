@@ -4,14 +4,18 @@ import javax.persistence.Entity;
 
 public class VoteSondage {
 
-    private final long id;
-    private final String session;
-    //private final String date;
-    //private final String description;
+    private long id;
+    private String session;
+    private String date;
+    private String description;
 
-    public VoteSondage(long id, String session) {
+    public VoteSondage(long id, String session, String Date, String description) {
         this.id = id;
         this.session = session;
+        this.date = date;
+        this.description = description;
+    }
+    public VoteSondage(){
 
     }
 
@@ -24,4 +28,26 @@ public class VoteSondage {
         return session;
     }
 
+    public void setId(long id){
+        this.id = id;
+    }
+    public void setSession(String session){
+        this.session = session;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
