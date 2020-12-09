@@ -1,3 +1,6 @@
+package accessingDataJPA.model;/*package accessingDataJPA.model;
+
+import accessingDataJPA.model.Sondage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -36,12 +39,12 @@ public class SondageOption {
     public Sondage add(final Sondage sondage) {
         final String id = "fr" + System.currentTimeMillis() + "d";
         final Sondage newSondage = new Sondage(id,
-                sondage.getName(),
-                sondage.getDescription(),
+                sondage.getName());
+                /*sondage.getDescription(),
                 sondage.getPlace(),
                 sondage.getDate());
         sondages.put(id, newSondage);
         return newSondage;
 
     }
-}
+}*/
