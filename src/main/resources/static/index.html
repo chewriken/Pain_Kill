@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Sondage PainKill</title>
 </head>
 <body>
     <h1>Liste des sondages</h1>
+        <div>
+            <table width="50%" border="1" th:each="${newSondage}">
+                <tr>
+                    <td><b>ID</b></td>
+                    <td th:text="${newSondage.id}" ></td>
+                </tr>
+                <tr>
+                    <td><b>Name</b></td>
+                    <td th:text="${newSondage.name}" ></td>
+                </tr>
+                <tr>
+                    <td><b>Place</b></td>
+                    <td th:text="${newSondage.place}" ></td>
+                </tr>
+                <tr>
+                    <td><b>Date</b></td>
+                    <td th:text="${newSondage.date}" ></td>
+                </tr>
+                <tr>
+                    <td><b>Description</b></td>
+                    <td th:text="${newSondage.description}" ></td>
+                </tr>
+            </table>
+        </div>
+    <p></p>
+    <form action="creation_sondage" th:action="@{/creation_sondage}" method="POST">
+        <a th:href="@{/creation_sondage}"> <input type="submit" class="btn btn-primary" value="Créer un nouveau sondage"></a>
+    </form>
+
 </body>
 </html>

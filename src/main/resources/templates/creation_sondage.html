@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sondage PainKill</title>
+</head>
+<body>
+<h1>Sondage PainKill</h1>
+<h2>Création des sondages</h2>
+
+    <form action="#" th:action="@{/creation_sondage}" th:object="${newSondage}" method="POST">
+        <p>Id: </p>
+        <input type="text" th:field="*{id}">
+        <p>Name: </p>
+        <input type="text" th:field="*{name}">
+        <p>Place: </p>
+        <input type="text" th:field="*{place}">
+        <p>Date: </p>
+        <input type="date" th:field="*{date}">
+        <p>Description: </p>
+        <input type="text" th:field="*{description}">
+        <input type="submit" value="Créer">
+    </form>
+
+</body>
+</html>

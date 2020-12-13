@@ -15,7 +15,7 @@ import java.util.List;
 public class SondageController {
     private List<Sondage> sondageList = new ArrayList<>();
 
-    @PostMapping("/sondage")
+    @PostMapping("/creation_sondage")
     public String postSondage(@ModelAttribute Sondage newSondage) {
         sondageList.add(newSondage);
 
@@ -29,6 +29,15 @@ public class SondageController {
         model.addAttribute("newSondage", new Sondage());
 
         return "sondage";
+    }
+
+    @GetMapping("/creation_sondage")
+    public String showCreate(Model model){
+
+        model.addAttribute("sdglist",sondageList);
+        model.addAttribute("newSondage", new Sondage());
+
+        return "creation_sondage";
     }
 }
 

@@ -7,8 +7,9 @@ public class Sondage {
     public String place;
     public String date;
     public String description;
+    public boolean vote;
 
-    public Sondage(long id, String name, String place, String date, String description){
+    public Sondage(long id, String name, String place, String date, String description, boolean vote){
 
         //super();
         this.id = id;
@@ -16,9 +17,30 @@ public class Sondage {
         this.place = place;
         this.date = date;
         this.description = description;
+        this.vote = vote;
     }
 
     public Sondage() {
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public long getId() {
