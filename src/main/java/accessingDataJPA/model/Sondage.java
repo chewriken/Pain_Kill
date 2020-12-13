@@ -9,7 +9,7 @@ public class Sondage {
     public String description;
     public boolean vote;
 
-    public Sondage(long id, String name, String place, String date, String description, boolean vote){
+    public Sondage(long id, String name, String place, String date, String description, Boolean vote){
 
         //super();
         this.id = id;
@@ -22,6 +22,7 @@ public class Sondage {
 
     public Sondage() {
     }
+
 
     public void setId(long id) {
         this.id = id;

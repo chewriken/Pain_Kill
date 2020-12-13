@@ -15,9 +15,11 @@ import java.util.List;
 public class SondageController {
     private List<Sondage> sondageList = new ArrayList<>();
 
+
     @PostMapping("/creation_sondage")
     public String postSondage(@ModelAttribute Sondage newSondage) {
-        sondageList.add(newSondage);
+        Sondage sondage = new Sondage(newSondage.getId(), newSondage.getName(), newSondage.getPlace(), newSondage.getDate(), newSondage.getDescription(), false);
+        sondageList.add(sondage);
 
         return "redirect:sondage";
     }
