@@ -1,7 +1,17 @@
 package accessingDataJPA.model;
 //package com.example.restservice;
 
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Sondage {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     public String name;
     public String place;

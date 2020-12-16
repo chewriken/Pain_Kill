@@ -1,6 +1,8 @@
 package accessingDataJPA.controller;
 
+import accessingDataJPA.data.SondageDAO;
 import accessingDataJPA.model.Sondage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +15,15 @@ import java.util.List;
 
 @Controller
 public class SondageController {
-    private List<Sondage> sondageList = new ArrayList<>();
+
+    @Autowired
+    private SondageDAO sondageDAO;
 
 
     @PostMapping("/creation_sondage")
     public String postSondage(@ModelAttribute Sondage newSondage) {
         Sondage sondage = new Sondage(newSondage.getId(), newSondage.getName(), newSondage.getPlace(), newSondage.getDate(), newSondage.getDescription(), false);
-        sondageList.add(sondage);
+        sondageDAO.save(sondage);
 
         return "redirect:sondage";
     }
@@ -27,7 +31,7 @@ public class SondageController {
     @GetMapping("/sondage")
     public String showSondage(Model model){
 
-        model.addAttribute("sdglist",sondageList);
+        model.addAttribute("sdglist",sondageDAO.findAll());
         model.addAttribute("newSondage", new Sondage());
 
         return "sondage";
@@ -36,7 +40,7 @@ public class SondageController {
     @GetMapping("/creation_sondage")
     public String showCreate(Model model){
 
-        model.addAttribute("sdglist",sondageList);
+        model.addAttribute("sdglist",sondageDAO.findAll());
         model.addAttribute("newSondage", new Sondage());
 
         return "creation_sondage";

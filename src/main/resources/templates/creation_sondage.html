@@ -9,8 +9,6 @@
 <h2>Création des sondages</h2>
 
     <form action="#" th:action="@{/creation_sondage}" th:object="${newSondage}" method="POST">
-        <p>Id: </p>
-        <input type="text" th:field="*{id}">
         <p>Name: </p>
         <input type="text" th:field="*{name}">
         <p>Place: </p>
