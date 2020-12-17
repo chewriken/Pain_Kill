@@ -12,19 +12,30 @@ import java.util.List;
 public interface ClientDAO extends JpaRepository<Client,Long> {
 
     List<Client> findByNom(String nom);
-    Client findById(long id);
 
-    @Query(value = "select * from Client where login= ?1 and mdp= ?2",nativeQuery = true)
+    @Query(value = "select * from client where login= ?1 and mdp= ?2",nativeQuery = true)
     Client connexion(String login,String mdp);
 
-    @Query(value = "select * from Client",nativeQuery = true)
-    List<Client> selectAll();
+    @Query(value = "select * from client where login= ?1",nativeQuery = true)
+    Client getClientByLogin(String login);
 
-    @Query(value = "select * from Client  where prenom=?1",nativeQuery = true)
-    List<Client> selectByPrenom(String prenom);
+    @Query(value = "select * from client where id= ?1",nativeQuery = true)
+    Client getClientById(int id);
 
     @Modifying
-    @Query(value = "insert into Client ( login, mdp, prenom,nom) values (?1, ?2,?3,?4)",
-            nativeQuery = true)
-    void insertClient(String login, String mdp, String prenom, String nom);
+    @Query(value = "update client set nom= ?1 where id= ?2",nativeQuery = true)
+    Client setNom(String nom,int id);
+
+    @Modifying
+    @Query(value = "update client set prenom= ?1 where id= ?2",nativeQuery = true)
+    Client setPrenom(String prenom,int id);
+
+    @Modifying
+    @Query(value = "update client set login= ?1 where id= ?2",nativeQuery = true)
+    Client setLogin(String loginn,int id);
+
+    @Modifying
+    @Query(value = "update client set mdp= ?1 where id= ?2",nativeQuery = true)
+    Client setMDP(String mdp,int id);
+
 }
