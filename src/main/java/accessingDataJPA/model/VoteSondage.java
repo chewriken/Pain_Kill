@@ -22,16 +22,17 @@ public class VoteSondage {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private String date;
     private String description;
+    private Boolean status;
 
-    public VoteSondage(String session, String date, String description) {
+    public VoteSondage(String session, String date, String description,Boolean status) {
         this.session = session;
         this.date = date;
         this.description = description;
+        this.status = status;
     }
     public VoteSondage(){
 
     }
-
 
     public long getId() {
         return id;
@@ -62,5 +63,13 @@ public class VoteSondage {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }
