@@ -1,24 +1,16 @@
 package accessingDataJPA.controller;
 
 import accessingDataJPA.data.ClientDAO;
-import accessingDataJPA.data.UserDTO;
-import accessingDataJPA.exception.UserAlreadyExistException;
 import accessingDataJPA.model.Client;
 import accessingDataJPA.service.SecurityService;
 import accessingDataJPA.service.UserService;
 import accessingDataJPA.validator.ClientValidator;
+import accessingDataJPA.validator.ModificationValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class InscriptionController {
@@ -36,10 +28,13 @@ public class InscriptionController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ModificationValidator modificationValidator;
+
     @GetMapping("/inscription")
     public String showInscription(Model model){
         model.addAttribute("user", new Client());
-        return "InscriptionPage";
+        return "InscriptionPage.html";
     }
 
     @PostMapping("/inscription")
@@ -65,18 +60,27 @@ public class InscriptionController {
     public String showMonCompte(Model model,@RequestParam(value="id") int id){
         Client client = clientDAO.getClientById(id);
         model.addAttribute("client",client);
+        model.addAttribute("modificationCompte",new Client());
         return "GestionCompte";
     }
 
     @PostMapping("/monCompte")
-    public String postMonCompte(@ModelAttribute Client newclient) {
-        List<Client> clientList = clientDAO.findAll();
-        for(Client client:clientList){
-            if(client.getLogin().equals(newclient.getLogin()) && client.getMdp().equals(newclient.getMdp())){
-                return "redirect:client";
-            }
+    public String postMonCompte(@ModelAttribute("client") Client newClient,@RequestParam(value="id") int id,BindingResult bindingResult){
+        modificationValidator.validate(newClient,bindingResult);
+        if (bindingResult.hasErrors()){  return "redirect:monCompte?id="+id; }
+        if(!newClient.getNom().equals("")){
+            clientDAO.setNom(newClient.getNom(),id);
         }
-        return "redirect:connexion";
+        if (!newClient.getPrenom().equals("")){
+            clientDAO.setPrenom(newClient.getPrenom(),id);
+        }
+        if (!newClient.getLogin().equals("")){
+            clientDAO.setLogin(newClient.getLogin(),id);
+        }
+        if(!newClient.getMdp().equals("")){
+            clientDAO.setMDP(newClient.getLogin(),id);
+        }
+        return "redirect:client?id="+id;
     }
 
     @GetMapping({"/","/connexion"})

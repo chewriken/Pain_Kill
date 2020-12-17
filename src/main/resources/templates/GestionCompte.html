@@ -6,12 +6,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body>
-    <p th:text="${client.nom}"></p>
-    <p th:text="${client.prenom}"></p>
-    <p th:text="${client.login}"></p>
-    <br/>
+    <form th:action="@{'/monCompte?id='+${client.id}}" th:object="${modificationCompte}" method="POST" style="max-width: 350px;margin: 0 auto">
+    <p th:text="'Nom: '+${client.nom}"></p>
+    <p><label><input type="text" th:field="*{nom}" class="form-control" name="nom" placeholder="Nouveau nom" autofocus/></label></p>
+    <p th:text="'Prenom: '+${client.prenom}"></p>
+    <p><label><input type="text" th:field="*{prenom}" class="form-control" name="prenom" placeholder="Nouveau prenom" /></label></p>
+    <p th:text="'Login: '+${client.login}"></p>
+    <p><label><input type="text" th:field="*{login}" class="form-control" name="login" placeholder="Nouveau login" /></label></p>
+    <p th:if="${#fields.hasErrors('passwordConfirm')}" class="text-danger">Les mots de passe ne sont pas identique</p>
+    <p th:text="'Mdp: '"></p>
+    <p><label><input type="password" th:field="*{mdp}" class="form-control" name="mdp" placeholder="Nouveau Password" /></label></p>
+    <p><label><input type="password" th:field="*{passwordConfirm}" class="form-control" name="passwordConfirm" placeholder="Confirm Password" /></label></p>
+    <p th:if="${#fields.hasErrors('passwordConfirm')}" class="text-danger">Les mots de passe ne sont pas identique</p>
+    <p><input type="submit" class="btn btn-primary" value="Confirmer"></p>
+    </form >
+
     <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Logout" />
+        <p style="margin-left: 10px"><a th:href="'/client?id='+${client.id}"><input type="button" class="btn btn-primary" value="Acceuil"></a><input type="submit" class="btn btn-primary" value="Logout" style="margin-left: 10px"/></p>
     </form>
 </body>
 </html>

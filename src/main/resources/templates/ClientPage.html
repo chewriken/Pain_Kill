@@ -8,9 +8,9 @@
     <body>
         <h1 th:text="Bonjour + ' ' +${client.nom}"></h1>
 
-    <a th:href="@{'/monCompte?id='+${client.id}}"> <input type="submit" value="mon compte" > </a>
+    <a th:href="@{'/monCompte?id='+${client.id}}"> <input type="submit" class="btn btn-primary" value="mon compte" > </a>
     <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Logout" />
+        <input type="submit" class="btn btn-primary" value="Logout" />
     </form>
 
 </body>
