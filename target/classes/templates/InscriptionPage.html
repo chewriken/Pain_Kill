@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div style="margin-top: 40px">
+    <h1 class="text-center" style="margin-bottom: 30px">Inscription</h1>
+
+    <div th:if="${param.error}">
+        <p class="text-danger">Invalid username or password</p>
+    </div>
+
+
+
+    <form th:action="@{/inscription}" th:object="${user}" method="POST" style="max-width: 350px;margin: 0 auto">
+        <p><input type="text" th:field="*{prenom}" class="form-control" name="login" placeholder="prenom" required autofocus/></p>
+        <p><input type="text" th:field="*{nom}" class="form-control" name="login" placeholder="nom" required/></p>
+        <p><input type="text" th:field="*{login}" class="form-control" name="login" placeholder="Login" required/></p>
+        <p th:if="${#fields.hasErrors('login')}" class="text-danger">Le login est déjà utilisé</p>
+        <p><input type="password" th:field="*{mdp}" class="form-control" name="mdp" placeholder="password" required/></p>
+        <p th:if="${#fields.hasErrors('mdp')}" class="text-danger">La taille du mot de passe doit être supérieur a 2</p>
+        <p><input type="password" th:field="*{passwordConfirm}" class="form-control" name="mdpConfirm" placeholder="password confirm" required/></p>
+        <p th:if="${#fields.hasErrors('passwordConfirm')}" class="text-danger">Les mots de passe ne sont pas identique</p>
+        <p><input type="submit" class="btn btn-primary" value="save"> </p>
+
+    </form>
+    <br/>
+    <a th:href="@{/connexion}" style="margin-left: 10px">Vous avez déjà un compte?</a>
+</div>
+</body>
+</html>
