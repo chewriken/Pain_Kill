@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container-fluid text-center">
+        <div class="border border-secondary p-3 rounded">
+
+            <h1 style="margin-bottom: 20px">Connexion</h1>
+
+            <div th:if="${param.error}">
+            <p class="text-danger">Invalid username or password</p>
+            </div>
+
+            <div th:if="${param.logout}">
+                <p class="text-warning">You have been logout</p>
+            </div>
+
+            <form th:action="@{/connexion}" th:object="${connexion}" method="POST" style="max-width: 350px;margin: 0 auto">
+                <p><label>
+                    <input type="text" th:field="*{login}" class="form-control" name="login" placeholder="Login" required autofocus/>
+                </label></p>
+                <p><label>
+                    <input type="password" th:field="*{mdp}" class="form-control" name="mdp" placeholder="password" required/>
+                </label></p>
+                <p><input type="submit" class="btn btn-primary" value="connexion"></p>
+            </form>
+
+            <a th:href="@{/inscription}"> <input type="submit" class="btn btn-primary" value="inscription" > </a>
+
+        </div>
+    </div>
+</body>
+</html>
