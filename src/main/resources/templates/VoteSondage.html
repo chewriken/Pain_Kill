@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vote</title>
+</head>
+<body>
+<h1>Vote</h1>
+    <h2>Liste de votes </h2>
+
+<form action="#" th:action="@{/VoteSondage}" th:object="${newVote}" method="post">
+    <p>Session :</p>
+    <input type="text" th:field="*{session}">
+    <p>Description :</p>
+    <input type="text" th:field="*{description}">
+    <p>Date :</p>
+    <input type="date" th:field="*{date}">
+    <input type="submit" value="Save">
+
+
+
+</form>
+        <div th:each="vote:${Vote}">
+            <p th:text="${vote.id}"></p>
+            <p th:text="${vote.session}"></p>
+            <p th:text="${vote.date}"></p>
+            <p th:text="${vote.description}"></p>
+            <p>Participation :</p>
+            <p th:text="${vote.status} ? 'Participe' : 'Ne participe pas'"></p>
+            <form th:action="@{'/UpdateVote?id='+${vote.id}}" th:object="${UpdateVote}" method="post">
+               <input type="submit" value="Participer" >
+            </form>
+    </div>
+</body>
+</html>
