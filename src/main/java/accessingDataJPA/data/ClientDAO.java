@@ -22,27 +22,27 @@ public interface ClientDAO extends JpaRepository<Client,Long> {
     @Query(value = "select * from client where login= ?1",nativeQuery = true)
     Client getClientByLogin(String login);
 
-    @Query(value = "select * from client where id= ?1",nativeQuery = true)
+    @Query(value = "select * from client where id_user= ?1",nativeQuery = true)
     Client getClientById(int id);
 
     @Transactional
     @Modifying
-    @Query(value = "update client set nom= ?1 where id= ?2",nativeQuery = true)
+    @Query(value = "update client set nom= ?1 where id_user= ?2",nativeQuery = true)
     void setNom(String nom,int id);
 
     @Transactional
     @Modifying
-    @Query(value = "update client set prenom= ?1 where id= ?2",nativeQuery = true)
+    @Query(value = "update client set prenom= ?1 where id_user= ?2",nativeQuery = true)
     void setPrenom(String prenom,int id);
 
     @Transactional
     @Modifying
-    @Query(value = "update client set login= ?1 where id= ?2",nativeQuery = true)
+    @Query(value = "update client set login= ?1 where id_user= ?2",nativeQuery = true)
     void setLogin(String login,int id);
 
     @Transactional
     @Modifying
-    @Query(value = "update client set mdp= ?1 where id= ?2",nativeQuery = true)
+    @Query(value = "update client set mdp= ?1 where id_user= ?2",nativeQuery = true)
     void setMDP(String mdp,int id);
 
 }

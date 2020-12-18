@@ -7,7 +7,7 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    private int idUser;
     private String prenom;
     private String nom;
     @Column(unique = true)
@@ -37,11 +37,11 @@ public class Client {
     public String toString() {
         return String.format(
                 "Customer[id=%d, firstName='%s', lastName='%s', login='%s', mdp='%s']",
-                id, prenom, nom, login, mdp);
+                idUser, prenom, nom, login, mdp);
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdUser(int id) {
+        this.idUser = id;
     }
 
     public void setPrenom(String prenom) {
@@ -64,8 +64,8 @@ public class Client {
 
     public String getRole() { return role; }
 
-    public int getId() {
-        return id;
+    public int getIdUser() {
+        return idUser;
     }
 
     public String getPrenom() {

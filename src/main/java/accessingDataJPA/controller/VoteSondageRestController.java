@@ -1,7 +1,7 @@
 package accessingDataJPA.controller;
 
-import accessingDataJPA.data.VoteSondageDAO;
-import accessingDataJPA.model.VoteSondage;
+import accessingDataJPA.data.SondageDAO;
+import accessingDataJPA.model.Sondage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,16 +10,16 @@ import java.util.List;
 @RestController
 public class VoteSondageRestController {
    @Autowired
-    VoteSondageDAO voteSondageDAO;
+   SondageDAO sondageDAO;
 
    @GetMapping("/api/voteSondage")
-   public List<VoteSondage> voteSondageList(){
-       return voteSondageDAO.findAll();
+   public List<Sondage> voteSondageList(){
+       return sondageDAO.findAll();
    }
 
 
     @PostMapping
-    public void saveVoteSondage(@RequestBody VoteSondage voteSondage){
-       voteSondageDAO.save(voteSondage);
+    public void saveVoteSondage(@RequestBody Sondage voteSondage){
+       sondageDAO.save(voteSondage);
     }
 }

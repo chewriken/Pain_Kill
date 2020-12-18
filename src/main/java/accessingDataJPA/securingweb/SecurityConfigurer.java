@@ -62,14 +62,14 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
             .and()
             .formLogin().loginPage("/connexion")
             .usernameParameter("login").passwordParameter("mdp")
-            .defaultSuccessUrl("/client?id=1")
+            .defaultSuccessUrl("/sondage?id=1")
             .failureUrl("/connexion?error")
             .successHandler(new AuthenticationSuccessHandler() {
                 @Override
                 public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
                     String login = authentication.getName();
                     Client client = clientDAO.getClientByLogin(login);
-                    response.sendRedirect("/client?id="+client.getId());
+                    response.sendRedirect("/sondage?id="+client.getIdUser());
                 }
             })
             .permitAll()

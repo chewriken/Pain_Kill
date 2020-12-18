@@ -1,41 +1,44 @@
 package accessingDataJPA.model;
-//package com.example.restservice;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Sondage {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long idSondage;
+    @Column(unique = true)
     public String name;
     public String place;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     public String date;
     public String description;
-    public boolean vote;
+    public Boolean status;
 
-    public Sondage(long id, String name, String place, String date, String description, Boolean vote){
+    public Sondage( String name, String place, String date, String description, Boolean vote){
 
-        //super();
-        this.id = id;
         this.name = name;
         this.place = place;
         this.date = date;
         this.description = description;
-        this.vote = vote;
+        this.status = vote;
     }
 
     public Sondage() {
     }
 
+    public Boolean getStatus() {
+        return status;
+    }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public void setIdSondage(long id) {
+        this.idSondage = id;
     }
 
     public void setName(String name) {
@@ -54,8 +57,8 @@ public class Sondage {
         this.description = description;
     }
 
-    public long getId() {
-        return id;
+    public long getIdSondage() {
+        return idSondage;
     }
     public String getName() {
         return name;
@@ -72,6 +75,6 @@ public class Sondage {
 
     @Override
     public String toString() {
-        return "Session paintball [Id:" + id + ", Name:" + name + ", Description:" + description + ", Date de rendez-vous:" + date + ", Lieu:" + place + "]";
+        return "Session paintball [Id:" + idSondage + ", Name:" + name + ", Description:" + description + ", Date de rendez-vous:" + date + ", Lieu:" + place + "]";
     }
 }
